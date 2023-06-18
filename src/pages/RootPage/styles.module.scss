@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 48px;
+
+  @media (min-width: 768px) {
+    min-height: 100vh;
+    margin-top: 0;
+  }
+}
