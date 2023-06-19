@@ -1,0 +1,11 @@
+.container {
+  padding: 16px;
+  border: 2px solid var(--yellow);
+  border-radius: 8px;
+  min-width: 100%;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    min-width: 240px;
+  }
+}

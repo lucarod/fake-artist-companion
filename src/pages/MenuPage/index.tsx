@@ -1,14 +1,16 @@
 import { Outlet } from 'react-router-dom';
 
+import { OutlineBox } from '@/components/OutlineBox';
+
 import styles from './styles.module.scss';
 
 export function MenuPage() {
   return (
-    <div className={styles.container}>
+    <>
       <h1 className={styles.title}>Fake Artist Companion</h1>
-      <div className={styles.content}>
+      <OutlineBox>
         <Outlet />
-      </div>
-    </div>
+      </OutlineBox>
+    </>
   );
 }

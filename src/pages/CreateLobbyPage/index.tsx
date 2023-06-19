@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -10,12 +11,13 @@ import styles from './styles.module.scss';
 
 const validationSchema = z.object({
   name: z.string().min(1),
-  password: z.string().min(1),
 });
 
 type ValidationSchemaType = z.infer<typeof validationSchema>;
 
 export function CreateLobbyPage() {
+  const navigate = useNavigate();
+
   const { register, handleSubmit, reset, formState } =
     useForm<ValidationSchemaType>({
       resolver: zodResolver(validationSchema),
@@ -23,6 +25,7 @@ export function CreateLobbyPage() {
 
   const onSubmit: SubmitHandler<ValidationSchemaType> = (data) => {
     console.log({ data, formState });
+    navigate('/game/1234');
   };
 
   useEffect(() => {
@@ -33,10 +36,9 @@ export function CreateLobbyPage() {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      <input {...register('name')} placeholder="Digite seu nome" />
       <input
-        {...register('password')}
-        placeholder="Digite a senha da sala"
+        {...register('name')}
+        placeholder="Digite seu nome"
         autoComplete="off"
       />
       <footer className={styles.formFooter}>

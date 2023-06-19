@@ -2,14 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import { RootPage } from './pages/RootPage';
-import { ErrorPage } from './pages/ErrorPage';
-import { MenuPage } from './pages/MenuPage';
-import { MainLobbyPage } from './pages/MainLobbyPage';
-import { CreateLobbyPage } from './pages/CreateLobbyPage';
-import { JoinLobbyPage } from './pages/JoinLobbyPage';
+import { RootPage } from '@/pages/RootPage';
+import { ErrorPage } from '@/pages/ErrorPage';
+import { MenuPage } from '@/pages/MenuPage';
+import { MainLobbyPage } from '@/pages/MainLobbyPage';
+import { CreateLobbyPage } from '@/pages/CreateLobbyPage';
+import { JoinLobbyPage } from '@/pages/JoinLobbyPage';
+import { GamePage } from '@/pages/GamePage';
 
-import './assets/styles/global.scss';
+import '@/assets/styles/global.scss';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
             element: <JoinLobbyPage />,
           },
         ],
+      },
+      {
+        path: 'game/:lobbyId',
+        element: <GamePage />,
       },
     ],
   },
