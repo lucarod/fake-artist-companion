@@ -1,10 +1,12 @@
+import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import styles from './styles.module.scss';
 import { Button } from '@/components/Button';
-import { useEffect } from 'react';
+import { Link } from '@/components/Link';
+
+import styles from './styles.module.scss';
 
 const validationSchema = z.object({
   name: z.string().min(1),
@@ -32,8 +34,15 @@ export function CreateLobbyPage() {
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <input {...register('name')} placeholder="Digite seu nome" />
-      <input {...register('password')} placeholder="Digite a senha da sala" />
-      <Button type="submit">Criar sala</Button>
+      <input
+        {...register('password')}
+        placeholder="Digite a senha da sala"
+        autoComplete="off"
+      />
+      <footer className={styles.formFooter}>
+        <Link to="/">Voltar</Link>
+        <Button type="submit">Criar sala</Button>
+      </footer>
     </form>
   );
 }
