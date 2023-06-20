@@ -1,17 +1,30 @@
 import { OutlineBox } from '@/components/OutlineBox';
+import { GameMasterScreen } from '@/components/GameMasterScreen';
+import { ArtistScreen } from '@/components/ArtistScreen';
+
 import { Role, RoleEnum } from './types';
 import { getGameRoleTitle } from './utils';
+import styles from './styles.module.scss';
 
-const playerRole: Role = RoleEnum.GameMaster;
+const playerRole: Role = RoleEnum.Artist;
+const roleTitle = getGameRoleTitle(playerRole);
+const isWordSelected = true;
 
 export function GamePage() {
-  const roleTitle = getGameRoleTitle(playerRole);
   return (
     <>
-      <h1>{roleTitle}</h1>
-      <OutlineBox>
-        <p>GamePage</p>
-      </OutlineBox>
+      <header>
+        <h1 className={styles.title}>{roleTitle}</h1>
+      </header>
+      <main className={styles.content}>
+        <OutlineBox>
+          {playerRole === RoleEnum.GameMaster ? (
+            <GameMasterScreen isWordSelected={isWordSelected} />
+          ) : (
+            <ArtistScreen isWordSelected={isWordSelected} />
+          )}
+        </OutlineBox>
+      </main>
     </>
   );
 }

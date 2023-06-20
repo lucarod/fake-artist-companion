@@ -7,10 +7,14 @@ import styles from './styles.module.scss';
 export function MenuPage() {
   return (
     <>
-      <h1 className={styles.title}>Fake Artist Companion</h1>
-      <OutlineBox>
-        <Outlet />
-      </OutlineBox>
+      <header>
+        <h1 className={styles.title}>Fake Artist Companion</h1>
+      </header>
+      <main className={styles.content}>
+        <OutlineBox>
+          <Outlet />
+        </OutlineBox>
+      </main>
     </>
   );
 }
