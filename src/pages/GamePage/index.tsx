@@ -5,6 +5,7 @@ import { ArtistScreen } from '@/components/ArtistScreen';
 import { Role, RoleEnum } from './types';
 import { getGameRoleTitle } from './utils';
 import styles from './styles.module.scss';
+import { ScoreTable } from '@/components/ScoreTable';
 
 const playerRole: Role = RoleEnum.Artist;
 const roleTitle = getGameRoleTitle(playerRole);
@@ -25,6 +26,7 @@ export function GamePage() {
           )}
         </OutlineBox>
       </main>
+      <ScoreTable />
     </>
   );
 }
