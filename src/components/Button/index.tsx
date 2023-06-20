@@ -1,18 +1,28 @@
-import { ReactNode } from 'react';
+import {
+  ButtonHTMLAttributes,
+  DetailedHTMLProps,
+  HTMLAttributes,
+  ReactNode,
+} from 'react';
 
 import styles from './styles.module.scss';
 
-type ButtonType = 'button' | 'submit' | 'reset' | undefined;
+interface ButtonProps
+  extends DetailedHTMLProps<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
+  children: ReactNode;
+}
 
 export function Button({
-  type,
   children,
-}: {
-  type: ButtonType;
-  children: ReactNode;
-}) {
+  type,
+  className,
+  ...props
+}: ButtonProps & HTMLAttributes<HTMLButtonElement>) {
   return (
-    <button className={styles.button} type={type}>
+    <button className={`${styles.button} ${className}`} type={type} {...props}>
       {children}
     </button>
   );

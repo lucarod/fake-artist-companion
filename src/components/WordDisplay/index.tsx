@@ -1,8 +1,10 @@
+import { OutlineBox } from '@/components/OutlineBox';
+
 import styles from './styles.module.scss';
 
 export function WordDisplay() {
   return (
-    <>
+    <OutlineBox>
       <div className={styles.container}>
         <p>Tema selecionado:</p>
         <span>Animais</span>
@@ -11,6 +13,6 @@ export function WordDisplay() {
         <p>Palavra selecionada:</p>
         <span>Cachorro</span>
       </div>
-    </>
+    </OutlineBox>
   );
 }

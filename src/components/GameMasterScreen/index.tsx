@@ -45,7 +45,14 @@ export function GameMasterScreen({
         </form>
       )}
 
-      {isWordSelected && <WordDisplay />}
+      {isWordSelected && (
+        <>
+          <WordDisplay />
+          <Button type="button" className={styles.reportButton}>
+            Reportar Resultado
+          </Button>
+        </>
+      )}
     </>
   );
 }
