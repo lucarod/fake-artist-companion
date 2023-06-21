@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -6,6 +8,7 @@ import { WordDisplay } from '@/components/WordDisplay';
 import { Button } from '@/components/Button';
 
 import styles from './styles.module.scss';
+import { ScoreRegisterModal } from '../ScoreRegisterModal';
 
 const validationSchema = z.object({
   theme: z.string().min(1),
@@ -19,6 +22,8 @@ export function GameMasterScreen({
 }: {
   isWordSelected: boolean;
 }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const { register, handleSubmit, formState } = useForm<ValidationSchemaType>({
     resolver: zodResolver(validationSchema),
   });
@@ -26,6 +31,14 @@ export function GameMasterScreen({
   const onSubmit: SubmitHandler<ValidationSchemaType> = (data) => {
     console.log({ data, formState });
   };
+
+  function openModal() {
+    setIsModalOpen(true);
+  }
+
+  function handleCloseModal() {
+    setIsModalOpen(false);
+  }
 
   return (
     <>
@@ -48,9 +61,17 @@ export function GameMasterScreen({
       {isWordSelected && (
         <>
           <WordDisplay />
-          <Button type="button" className={styles.reportButton}>
+          <Button
+            type="button"
+            className={styles.reportButton}
+            onClick={openModal}
+          >
             Reportar Resultado
           </Button>
+          <ScoreRegisterModal
+            isModalOpen={isModalOpen}
+            onCloseModal={handleCloseModal}
+          />
         </>
       )}
     </>
