@@ -4,4 +4,6 @@ export enum RoleEnum {
   Artist = 'artist',
 }
 
+export type GameState = 'roundOn' | 'endOfRound' | 'endOfGame';
+
 export type Role = RoleEnum;

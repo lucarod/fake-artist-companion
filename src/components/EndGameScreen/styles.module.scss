@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.endGameTitle {
+  font-size: 32px;
+  margin-bottom: 32px;
+}
+
+.winnerTitle {
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+
+.buttonRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+
+  button, a {
+    font-size: 20px;
+    min-width: 160px;
+    border: 2px solid var(--yellow);
+
+    &.active {
+      background: var(--purple);
+      color: var(--white);
+      cursor: default;
+      border-color: var(--white);
+    }
+  }
+}
